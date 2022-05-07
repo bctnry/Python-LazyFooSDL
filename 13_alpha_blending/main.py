@@ -3,10 +3,6 @@ import ctypes
 import sdl2
 import sdl2.sdlimage
 
-# NOTE: the texture I used here is the so-called "XOR texture", which is probably the most
-# famous texture in "old-school" demoscene because the code to generate this is very small
-# so it can easily fit in tight size restrictions.
-
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 
@@ -18,7 +14,6 @@ class LTexture:
 
         self._destroyed = True
 
-    # NOTE: you can also use prop to make getters for width and height.
     def get_width(self):
         return self._m_width
 
@@ -61,11 +56,6 @@ class LTexture:
         sdl2.SDL_SetTextureAlphaMod(self._m_texture, alpha)
     
     def free(self):
-        # NOTE: python objects are freed by the os.
-        # calling this method does not make the actual LTexture
-        # object to be freed, but the texture obj in SDL will.
-        # this is not how I prefer to do things, but to avoid
-        # further confusion...
         if not self._destroyed and self._m_texture:
             sdl2.SDL_DestroyTexture(self._m_texture)
             self._m_width = 0
@@ -162,8 +152,6 @@ def main():
                             if a-32 < 0: a = 0
                             else: a -= 32
 
-                # NOTE: when SDL_RenderClear, SDL will use the render draw color to
-                # fill in as the default background color. we set it to white here.
                 sdl2.SDL_SetRenderDrawColor(g_renderer, 0xff, 0xff, 0xff, 0xff)
                 sdl2.SDL_RenderClear(g_renderer)
 

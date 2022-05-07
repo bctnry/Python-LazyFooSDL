@@ -3,10 +3,6 @@ import ctypes
 import sdl2
 import sdl2.sdlimage
 
-# NOTE: the texture I used here is the so-called "XOR texture", which is probably the most
-# famous texture in "old-school" demoscene because the code to generate this is very small
-# so it can easily fit in tight size restrictions.
-
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 

@@ -3,10 +3,6 @@ import ctypes
 import sdl2
 import sdl2.sdlimage
 
-# NOTE: the texture I used here is the so-called "XOR texture", which is probably the most
-# famous texture in "old-school" demoscene because the code to generate this is very small
-# so it can easily fit in tight size restrictions.
-
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 
@@ -18,7 +14,6 @@ class LTexture:
 
         self._destroyed = True
 
-    # NOTE: you can also use prop to make getters for width and height.
     def get_width(self):
         return self._m_width
 
@@ -32,7 +27,6 @@ class LTexture:
         if not surface:
             print(f'Unable to load image {p}! SDL_image Error: {sdl2.sdlimage.IMG_GetError().decode()}')
         else:
-            # NOTE: i used the bright magenta color here. it works the same as the original (which uses cyan) though.
             sdl2.SDL_SetColorKey(surface, sdl2.SDL_TRUE, sdl2.SDL_MapRGB(surface.contents.format, 0xff, 0, 0xff))
             new_texture = sdl2.SDL_CreateTextureFromSurface(g_renderer, surface)
             if not new_texture:
@@ -53,11 +47,6 @@ class LTexture:
         sdl2.SDL_RenderCopy(g_renderer, self._m_texture, clip, render_quad)
     
     def free(self):
-        # NOTE: python objects are freed by the os.
-        # calling this method does not make the actual LTexture
-        # object to be freed, but the texture obj in SDL will.
-        # this is not how I prefer to do things, but to avoid
-        # further confusion...
         if not self._destroyed and self._m_texture:
             sdl2.SDL_DestroyTexture(self._m_texture)
             self._m_width = 0
@@ -150,8 +139,6 @@ def main():
                     if e.type == sdl2.SDL_QUIT:
                         quit = True
 
-                # NOTE: when SDL_RenderClear, SDL will use the render draw color to
-                # fill in as the default background color. we set it to white here.
                 sdl2.SDL_SetRenderDrawColor(g_renderer, 0xff, 0xff, 0xff, 0xff)
                 sdl2.SDL_RenderClear(g_renderer)
 
