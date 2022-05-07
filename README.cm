@@ -1,0 +1,15 @@
+= Python code for Lazy Foo's SDL turtorial
+
+== Installing requried libraries
+
+You need `pysdl2` and the SDL2 dynamically-linked libraries (`.dll` files or `.so` files or etc.). The easiest way is to install them using pip:
+
+#{code
+python -m pip install pysdl2 pysdl2-dll --user
+#}
+
+If you want to provide your own lib files you need to point the environment variable `PYSDL2_DLL_PATH` to the folder containing the files. At least on Windows that's the name.
+
+== A few notice(s)
+
+This is not an exact translation from Lazy Foo's code - I only read the turtorial and wrote the code myself.
