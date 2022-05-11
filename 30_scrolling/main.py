@@ -174,8 +174,9 @@ def load_media():
     return success
 
 def close():
-    global g_window, g_renderer, g_font
+    global g_window, g_renderer
 
+    g_bg.free()
     g_dot_texture.free()
 
     sdl2.SDL_DestroyRenderer(g_renderer)
