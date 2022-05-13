@@ -12,4 +12,5 @@ If you want to provide your own lib files you need to point the environment vari
 
 == A few notice(s)
 
-This is not an exact translation from Lazy Foo's code - I only read the turtorial and wrote the code myself.
++ This is not an exact translation from Lazy Foo's code - I only read the turtorial and wrote the code myself.
++ The font "CantoniaSerif.ttf" used in some of the code is distributed under the {link(CC BY 4.0 license):https://creativecommons.org/licenses/by/4.0/}
